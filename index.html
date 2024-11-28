@@ -11,19 +11,85 @@
     <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
     <script src="https://raw.githack.com/fcor/arjs-gestures/master/dist/gestures.js"></script>
     <script src="https://unpkg.com/aframe-event-set-component@^4.0.0/dist/aframe-event-set-component.min.js"></script>
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="./accordion.css">
+    <link rel="stylesheet" href="https://geoportal.dane.gov.co/src/styles/geoportalfonts.min.css">
 </head>
 
-<!-- Dynamically add places from Javascript -->
-<script src="./places.js"></script>
+
 
 <body>
-    <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false'
-        renderer='antialias: true; alpha: true' gesture-detector>
-        <a-plane color="#CCC" height="20" width="20"></a-plane>
-        <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
-        <!-- <a-entity material='color: red' geometry='primitive: box'
+    <div class="container-scene">
+        <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false'
+            renderer='antialias: true; alpha: true' gesture-detector>
+            <!-- <a-scene gesture-detector embedded arjs> -->
+            <!-- <a-plane color="#CCC" height="20" width="20"></a-plane> -->
+            <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
+            <!-- <a-entity material='color: red' geometry='primitive: box'
             gps-new-entity-place="latitude: 4.716322; longitude: -74.140995" scale="1 1 1"></a-entity> -->
-    </a-scene>
+        </a-scene>
+    </div>
+
+
+    <!-- Modal structure -->
+    <div id="myModal" class="modal">
+        <!-- <div class="ol-popup-closer" id="closeModalBtn"></button> -->
+        <div class="accordion">
+            <div class="accordion-item">
+                <button class="accordion-header">Datos principales</button>
+                <div class="accordion-content">
+                    <p class="results__panel__title__site"></p>
+                    <div class="functionFilter__accordion__panel --open">
+                        <ul class="analysisResult__list">
+                            <li class="analysisResult__item">
+                                <div class="analysisResult__icon --colorAlternative019">
+                                    <span class="DANE__Geovisor__icon__society"></span>
+                                </div>
+                                <h5 class="analysisResult__thirdtitle" id="analysisResult__totalPeople"></h5>
+                                <p class="analysisResult__text">Total de personas</p>
+                            </li>
+                            <li class="analysisResult__item">
+                                <div class="analysisResult__icon --colorAlternative006">
+                                    <span class="DANE__Geovisor__icon__townPeople"></span>
+                                </div>
+                                <h5 class="analysisResult__thirdtitle" id="analysisResult__totalLEA"></h5>
+                                <p class="analysisResult__text">Personas LEA</p>
+                            </li>
+                            <li class="analysisResult__item">
+                                <div class="analysisResult__icon --colorAlternative005">
+                                    <span class="DANE__Geovisor__icon__family"></span>
+                                </div>
+                                <h5 class="analysisResult__thirdtitle" id="analysisResult__totalHogares"></h5>
+                                <p class="analysisResult__text">Hogares</p>
+                            </li>
+                            <li class="analysisResult__item">
+                                <div class="analysisResult__icon --colorAlternative007">
+                                    <span class="DANE__Geovisor__icon__home"></span>
+                                </div>
+                                <h5 class="analysisResult__thirdtitle" id="analysisResult__totalViviendas"></h5>
+                                <p class="analysisResult__text">Viviendas</p>
+                            </li>
+                            <li class="analysisResult__item">
+                                <div class="analysisResult__icon --colorAlternative016">
+                                    <span class="DANE__Geovisor__icon__homePeople"></span>
+                                </div>
+                                <h5 class="analysisResult__thirdtitle" id="analysisResult__totalPesonaparticular">
+                                </h5>
+                                <p class="analysisResult__text">Personas en hogares particulares</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <button class="modal-button" id="closeModalBtn">Cerrar</button>
+    </div>
+
+    <!-- Dynamically add places from Javascript -->
+    <script src="./places.js"></script>
+    <script src="./accordion.js"></script>
 </body>
 
 </html>
