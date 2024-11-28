@@ -152,8 +152,6 @@ async function openModal(data) {
             document.getElementById("analysisResult__totalViviendas").innerText = viviendas;
             document.getElementById("analysisResult__totalPesonaparticular").innerText = personasLugaresParticulares;
 
-            console.log("TOTAL PERSONAS", totalPersonas);
-
             modal.style.display = "block";  // Show the modal
 
             // Open the modal when button is clicked

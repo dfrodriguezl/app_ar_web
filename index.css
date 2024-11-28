@@ -2,9 +2,9 @@ body {
     font-family: "Roboto", sans-serif;
 }
 
-span {
+/* span {
     margin-right: 0.5em;
-}
+} */
 
 div.debug {
     position: fixed;
@@ -353,11 +353,24 @@ div.debug {
 
     &:hover {
         color: #631028;
+        cursor: pointer;
     }
 }
 
 .ol-popup-closer:after {
-    content: "✖";
+    content: "X";
+}
+
+.results__panel {
+    overflow: hidden;
+    transition: all ease-in-out 0.2s;
+    height: auto;
+    max-height: 100%;
+
+    &.collapsed {
+        max-height: 0;
+        transition: all ease-in-out 0.2s;
+    }
 }
 
 /*//Estilos modo oscuro */
