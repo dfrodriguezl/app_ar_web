@@ -146,6 +146,154 @@ async function openModal(data) {
             const personasLugaresParticularesVar = variables.variablesCNPV["43501005"];
             const personasLugaresParticulares = data[personasLugaresParticularesVar];
 
+            // Sección datos de edificaciones
+
+            const usoViviendaVar = variables.variablesCNPV["43601001"];
+            const usoVivienda = data[usoViviendaVar];
+            const usoMixtoVar = variables.variablesCNPV["43601002"];
+            const usoMixto = data[usoMixtoVar];
+            const usoNoResidencialVar = variables.variablesCNPV["43601003"];
+            const usoNoResidencial = data[usoNoResidencialVar];
+            const usoLEAVar = variables.variablesCNPV["43601004"];
+            const usoLEA = data[usoLEAVar];
+
+            const usoNRIndustriaVar = variables.variablesCNPV["43603001"];
+            const usoNRIndustria = data[usoNRIndustriaVar];
+            const usoNRComercioVar = variables.variablesCNPV["43603002"];
+            const usoNRComercio = data[usoNRComercioVar];
+            const usoNRServiciosVar = variables.variablesCNPV["43603003"];
+            const usoNRServicios = data[usoNRServiciosVar];
+            const usoNRAgroVar = variables.variablesCNPV["43603004"];
+            const usoNRAgro = data[usoNRAgroVar];
+            const usoNRInstitucionalVar = variables.variablesCNPV["43603005"];
+            const usoNRInstitucional = data[usoNRInstitucionalVar];
+            const usoNRLoteVar = variables.variablesCNPV["43603006"];
+            const usoNRLote = data[usoNRLoteVar];
+            const usoNRParqueVar = variables.variablesCNPV["43603007"];
+            const usoNRParque = data[usoNRParqueVar];
+            const usoNRMineroVar = variables.variablesCNPV["43603008"];
+            const usoNRMinero = data[usoNRMineroVar];
+            const usoNRProteccionVar = variables.variablesCNPV["43603009"];
+            const usoNRProteccion = data[usoNRProteccionVar];
+            const usoNRConstruccionVar = variables.variablesCNPV["43603010"];
+            const usoNRConstruccion = data[usoNRConstruccionVar];
+            const usoNRSIVar = variables.variablesCNPV["43603011"];
+            const usoNRSI = data[usoNRSIVar];
+
+            const usoMixtoIndustriaVar = variables.variablesCNPV["43602001"];
+            const usoMixtoIndustria = data[usoMixtoIndustriaVar];
+            const usoMixtoComercioVar = variables.variablesCNPV["43602002"];
+            const usoMixtoComercio = data[usoMixtoComercioVar];
+            const usoMixtoServiciosVar = variables.variablesCNPV["43602003"];
+            const usoMixtoServicios = data[usoMixtoServiciosVar];
+            const usoMixtoAgroVar = variables.variablesCNPV["43602004"];
+            const usoMixtoAgro = data[usoMixtoAgroVar];
+            const usoMixtoSIVar = variables.variablesCNPV["43602005"];
+            const usoMixtoSI = data[usoMixtoSIVar];
+
+            // Sección datos de viviendas
+            const casaVar = variables.variablesCNPV["43701001"];
+            const casa = data[casaVar];
+            const aptoVar = variables.variablesCNPV["43701002"];
+            const apto = data[aptoVar];
+            const cuartoVar = variables.variablesCNPV["43701003"];
+            const cuarto = data[cuartoVar];
+            const viviendaIndigenaVar = variables.variablesCNPV["43701004"];
+            const viviendaIndigena = data[viviendaIndigenaVar];
+            const viviendaTradicionalVar = variables.variablesCNPV["43701005"];
+            const viviendaTradicional = data[viviendaTradicionalVar];
+            const otroVar = variables.variablesCNPV["43701006"];
+            const otro = data[otroVar];
+
+            const ocupacionOcupadaVar = variables.variablesCNPV["43702001"];
+            const ocupacionOcupada = data[ocupacionOcupadaVar];
+            const ocupacionAusentesVar = variables.variablesCNPV["43702002"];
+            const ocupacionAusentes = data[ocupacionAusentesVar];
+            const ocupacionTemporalVar = variables.variablesCNPV["43702003"];
+            const ocupacionTemporal = data[ocupacionTemporalVar];
+            const ocupacionDesocupadaVar = variables.variablesCNPV["43702004"];
+            const ocupacionDesocupada = data[ocupacionDesocupadaVar];
+
+            const ocupacionEstrato1Var = variables.variablesCNPV["43703001"];
+            const ocupacionEstrato1 = data[ocupacionEstrato1Var];
+            const ocupacionEstrato2Var = variables.variablesCNPV["43703002"];
+            const ocupacionEstrato2 = data[ocupacionEstrato2Var];
+            const ocupacionEstrato3Var = variables.variablesCNPV["43703003"];
+            const ocupacionEstrato3 = data[ocupacionEstrato3Var];
+            const ocupacionEstrato4Var = variables.variablesCNPV["43703004"];
+            const ocupacionEstrato4 = data[ocupacionEstrato4Var];
+            const ocupacionEstrato5Var = variables.variablesCNPV["43703005"];
+            const ocupacionEstrato5 = data[ocupacionEstrato5Var];
+            const ocupacionEstrato6Var = variables.variablesCNPV["43703006"];
+            const ocupacionEstrato6 = data[ocupacionEstrato6Var];
+            const ocupacionEstratoNSVar = variables.variablesCNPV["43703007"];
+            const ocupacionEstratoNS = data[ocupacionEstratoNSVar];
+
+            const serviciosEnergiaSiVar = variables.variablesCNPV["43704001"];
+            const serviciosEnergiaSi = data[serviciosEnergiaSiVar];
+            const serviciosEnergiaNoVar = variables.variablesCNPV["43704002"];
+            const serviciosEnergiaNo = data[serviciosEnergiaNoVar];
+            const serviciosAcueductoSiVar = variables.variablesCNPV["43704003"];
+            const serviciosAcueductoSi = data[serviciosAcueductoSiVar];
+            const serviciosAcueductoNoVar = variables.variablesCNPV["43704004"];
+            const serviciosAcueductoNo = data[serviciosAcueductoNoVar];
+            const serviciosAlcantarilladoSiVar = variables.variablesCNPV["43704005"];
+            const serviciosAlcantarilladoSi = data[serviciosAlcantarilladoSiVar];
+            const serviciosAlcantarilladoNoVar = variables.variablesCNPV["43704006"];
+            const serviciosAlcantarilladoNo = data[serviciosAlcantarilladoNoVar];
+            const serviciosGasSiVar = variables.variablesCNPV["43704007"];
+            const serviciosGasSi = data[serviciosGasSiVar];
+            const serviciosGasNoVar = variables.variablesCNPV["43704008"];
+            const serviciosGasNo = data[serviciosGasNoVar];
+            const serviciosBasuraSiVar = variables.variablesCNPV["43704009"];
+            const serviciosBasuraSi = data[serviciosBasuraSiVar];
+            const serviciosBasuraNoVar = variables.variablesCNPV["43704010"];
+            const serviciosBasuraNo = data[serviciosBasuraNoVar];
+            const serviciosInternetSiVar = variables.variablesCNPV["43704011"];
+            const serviciosInternetSi = data[serviciosInternetSiVar];
+            const serviciosInternetNoVar = variables.variablesCNPV["43704012"];
+            const serviciosInternetNo = data[serviciosInternetNoVar];
+            
+
+            
+
+            const dataCharts = {
+                chart1: {
+                    uso_vivienda: { valor: usoVivienda, etiqueta: "Vivienda" },
+                    uso_mixto: { valor: usoMixto, etiqueta: "Mixto" },
+                    uso_no_residencial: { valor: usoNoResidencial, etiqueta: "Unidad no residencial" },
+                    uso_lea: { valor: usoLEA, etiqueta: "Lugar especial de alojamiento" }
+                },
+                chart2: {
+                    uso_industria: {valor: usoMixtoIndustria, etiqueta: "Industria"},
+                    uso_comercio: {valor: usoMixtoComercio, etiqueta: "Comercio"},
+                    uso_servicios: {valor: usoMixtoServicios, etiqueta: "Servicios"},
+                    uso_agropecuario: {valor: usoMixtoAgro, etiqueta: "Agropecuario, Agroindustrial, Forestal"},
+                    uso_sin_informacion: {valor: usoMixtoSI, etiqueta: "Sin informacion"},
+                },
+                chart3: {
+                    uso_industria: {valor: usoNRIndustria, etiqueta: "Industria"},
+                    uso_comercio: {valor: usoNRComercio, etiqueta: "Comercio"},
+                    uso_servicios: {valor: usoNRServicios, etiqueta: "Servicios"},
+                    uso_agropecuario: {valor: usoNRAgro, etiqueta: "Agropecuario, Agroindustrial, Forestal"},
+                    uso_institucional: {valor: usoNRInstitucional, etiqueta: "Institucional"},
+                    uso_lote: {valor: usoNRLote, etiqueta: "Lote (Unidad sin construccion)"},
+                    uso_parque: {valor: usoNRParque, etiqueta: "Parque/Zona verde"},
+                    uso_minero: {valor: usoNRMinero, etiqueta: "Minero-Energetico"},
+                    uso_proteccion: {valor: usoNRProteccion, etiqueta: "Proteccion/Conservacion ambiental"},
+                    uso_construccion: {valor: usoNRConstruccion, etiqueta: "En construccion"},
+                    uso_sin_informacion: {valor: usoNRSI, etiqueta: "Sin informacion"}
+                },
+                chart4: {
+                    casa: {valor: casa, etiqueta: "Casa"},
+                    apto: {valor: apto, etiqueta: "Apartamento"},
+                    cuarto: {valor: cuarto, etiqueta: "Tipo cuarto"},
+                    vivienda_indigena: {valor: viviendaIndigena, etiqueta: "Vivienda tradicional indígena"},
+                    vivienda_etnica: {valor: viviendaTradicional, etiqueta: "Vivienda tradicional étnica (Afrocolombiana, isleña, Rom"},
+                    otro: {valor: otro, etiqueta: "Otro (Contenedor, carpa, embarcación, vagón, cueva, refugio natural,etc."}
+                }
+            }
+
             document.getElementById("analysisResult__totalPeople").innerText = totalPersonas;
             document.getElementById("analysisResult__totalLEA").innerText = personasLEA | 0;
             document.getElementById("analysisResult__totalHogares").innerText = hogares;
@@ -163,6 +311,8 @@ async function openModal(data) {
             closeModalBtn.addEventListener("click", function () {
                 modal.style.display = "none";
             });
+
+            drawChart(dataCharts);
 
             // Close modal if user clicks outside the modal content
             // window.addEventListener("click", function (event) {

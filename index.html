@@ -13,6 +13,7 @@
     <script src="https://unpkg.com/aframe-event-set-component@^4.0.0/dist/aframe-event-set-component.min.js"></script>
     <link rel="stylesheet" href="./index.css">
     <link rel="stylesheet" href="./accordion.css">
+    <link rel="stylesheet" href="./tab.css">
     <link rel="stylesheet" href="https://geoportal.dane.gov.co/src/styles/geoportalfonts.min.css">
 </head>
 
@@ -83,6 +84,91 @@
                         </div>
                     </div>
                 </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Datos de edificaciones</button>
+                    <div class="accordion-content">
+                        <!-- Tab links -->
+                        <div class="tab">
+                            <button class="tab-link active" onclick="openTab(event, 'tab1')">Uso</button>
+                            <button class="tab-link" onclick="openTab(event, 'tab2')">Uso no residencial</button>
+                            <button class="tab-link" onclick="openTab(event, 'tab3')">Uso mixto</button>
+                        </div>
+
+                        <!-- Tab content -->
+                        <div id="tab1" class="tab-content active">
+                            <canvas id="chart1" width="400" height="200"></canvas>
+                        </div>
+
+                        <div id="tab2" class="tab-content">
+                            <canvas id="chart2" width="400" height="200"></canvas>
+                        </div>
+
+                        <div id="tab3" class="tab-content">
+                            <canvas id="chart3" width="400" height="200"></canvas>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Datos de vivienda</button>
+                    <div class="accordion-content">
+                        <!-- Tab links -->
+                        <div class="tab">
+                            <button class="tab-link active" onclick="openTab(event, 'tab4')">Tipo</button>
+                            <button class="tab-link" onclick="openTab(event, 'tab5')">Ocupacion</button>
+                            <button class="tab-link" onclick="openTab(event, 'tab6')">Estrato</button>
+                            <button class="tab-link" onclick="openTab(event, 'tab7')">Servicios</button>
+                        </div>
+
+                        <!-- Tab content -->
+                        <div id="tab4" class="tab-content active">
+                            <canvas id="chart4" width="400" height="200"></canvas>
+                        </div>
+
+                        <div id="tab5" class="tab-content">
+                            <h3>Tab 5 Content</h3>
+                            <p>Content for Tab 5.</p>
+                        </div>
+
+                        <div id="tab6" class="tab-content">
+                            <h3>Tab 6 Content</h3>
+                            <p>Content for Tab 6.</p>
+                        </div>
+
+                        <div id="tab7" class="tab-content">
+                            <h3>Tab 7 Content</h3>
+                            <p>Content for Tab 7.</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Datos de personas</button>
+                    <div class="accordion-content">
+                        <!-- Tab links -->
+                        <div class="tab">
+                            <button class="tab-link active" onclick="openTab(event, 'tab8')">Sexo</button>
+                            <button class="tab-link" onclick="openTab(event, 'tab9')">Edades</button>
+                            <button class="tab-link" onclick="openTab(event, 'tab10')">Educacion</button>
+                        </div>
+
+                        <!-- Tab content -->
+                        <div id="tab8" class="tab-content active">
+                            <h3>Tab 8 Content</h3>
+                            <p>Content for Tab 8.</p>
+                        </div>
+
+                        <div id="tab9" class="tab-content">
+                            <h3>Tab 9 Content</h3>
+                            <p>Content for Tab 9.</p>
+                        </div>
+
+                        <div id="tab10" class="tab-content">
+                            <h3>Tab 10 Content</h3>
+                            <p>Content for Tab 10.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- <button class="modal-button" id="closeModalBtn">Cerrar</button> -->
@@ -91,6 +177,9 @@
     <!-- Dynamically add places from Javascript -->
     <script src="./places.js"></script>
     <script src="./accordion.js"></script>
+    <script src="./tab.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./charts.js"></script>
 </body>
 
 </html>

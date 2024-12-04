@@ -1,0 +1,35 @@
+/* Style the tab */
+.tab {
+    display: flex;
+    border-bottom: 2px solid #ccc;
+}
+
+.tab button {
+    background-color: inherit;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    transition: background-color 0.3s;
+    font-size: 16px;
+}
+
+.tab button:hover {
+    background-color: #ddd;
+}
+
+.tab button.active {
+    border-bottom: 3px solid #007BFF;
+    font-weight: bold;
+}
+
+/* Style the tab content */
+.tab-content {
+    display: none;
+    padding: 20px;
+    border-top: none;
+}
+
+.tab-content.active {
+    display: block;
+}
