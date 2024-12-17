@@ -38,7 +38,7 @@ window.onload = () => {
                         icon.setAttribute('name', marcador.COD_DANE);
                         icon.setAttribute('marcador', JSON.stringify(marcador));
                         icon.setAttribute('src', './assets/ic_marcador_dane.png');
-                        icon.setAttribute('scale', '7, 7');
+                        icon.setAttribute('scale', '20, 20');
                         icon.setAttribute("look-at", "[gps-new-camera]");
 
                         const text = document.createElement("a-text");
@@ -51,10 +51,20 @@ window.onload = () => {
                         });
                         text.setAttribute("position", {
                             x: 0,
-                            y: -7,
+                            y: -17,
                             z: 0
                         });
-                        text.setAttribute("value", marcador.COD_DANE + "\n " + distanceCalculated.toFixed(0) + " m");
+
+                        const viviendas = marcador.V21;
+                        const hogares = marcador.V32;
+                        const personas = marcador.V54;
+
+                        text.setAttribute("value", "Manzana: " + marcador.COD_DANE.slice(-8) + 
+                            "\n Viviendas: " + viviendas  + 
+                            "\n Hogares: " + hogares  +
+                            "\n Personas: " + personas  +
+                            "\n Dist: " + distanceCalculated.toFixed(0) + " m \n");
+                        // text.setAttribute("value", "Manzana: " + marcador.COD_DANE.slice(-8));
                         text.setAttribute("align", "center");
                         text.setAttribute("data-code", marcador.COD_DANE);
 

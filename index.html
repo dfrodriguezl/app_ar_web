@@ -22,10 +22,10 @@
 <body>
     <div class="container-scene">
         <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false'
-            renderer='antialias: true; alpha: true' gesture-detector>
+            renderer='antialias: true; alpha: true' gesture-detector gps-camera-recenter>
             <!-- <a-scene gesture-detector embedded arjs> -->
             <!-- <a-plane color="#CCC" height="20" width="20"></a-plane> -->
-            <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
+            <a-camera gps-new-camera='gpsMinDistance: 10' ></a-camera>
             <!-- <a-entity material='color: red' geometry='primitive: box'
             gps-new-entity-place="latitude: 4.716322; longitude: -74.140995" scale="1 1 1"></a-entity> -->
         </a-scene>
