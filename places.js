@@ -14,7 +14,7 @@ window.onload = () => {
 
                 let indexShow = 0;
 
-                const response = await fetch(`https://geoportal.dane.gov.co/laboratorio/serviciosjson/poblacion/centroides_manzanas.php?coordx=${e.detail.position.longitude}&coordy=${e.detail.position.latitude}&longitud=200`);
+                const response = await fetch(`https://cors-anywhere.com/https://geoportal.dane.gov.co/laboratorio/serviciosjson/poblacion/centroides_manzanas.php?coordx=${e.detail.position.longitude}&coordy=${e.detail.position.latitude}&longitud=200`);
                 const markers = await response.json();
 
                 markers.resultado.forEach((marcador, index) => {

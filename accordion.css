@@ -18,6 +18,18 @@
     border: none;
     outline: none;
     transition: background-color 0.3s;
+    font-family: "Roboto", sans-serif;
+    font-size: 14.4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.accordion-header > span:not(.accordion-indicator) {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    gap: 8px;
 }
 
 .accordion-header:hover {
@@ -33,4 +45,41 @@
 
 .accordion-content p {
     margin: 0;
+}
+
+.accordion-indicator {
+    font-size: 18px;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+    margin-left: auto;
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.accordion-indicator::before {
+    content: '';
+    width: 12px;
+    height: 2px;
+    background-color: currentColor;
+    position: absolute;
+    transition: all 0.3s ease;
+}
+
+.accordion-indicator::after {
+    content: '';
+    width: 2px;
+    height: 12px;
+    background-color: currentColor;
+    position: absolute;
+    transition: all 0.3s ease;
+}
+
+.accordion-header.active .accordion-indicator::after {
+    transform: scale(0);
+    opacity: 0;
 }
