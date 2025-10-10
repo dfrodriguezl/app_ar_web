@@ -80,7 +80,7 @@ div.debug {
 
 .modal {
     display: none;
-    position: relative;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -90,6 +90,8 @@ div.debug {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     z-index: 10;
     width: 50%;
+    max-height: 80vh;
+    overflow-y: auto;
 }
 
 .modal-button {
@@ -183,32 +185,39 @@ div.debug {
     text-align: center;
 }
 
-.analysisResult__sexList {
+.analysisResult__sexList{
     list-style: none;
-    margin: 10px 0;
+    margin:10px 0;
     padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-.analysisResult__sexitem {
+.analysisResult__sexitem{
     width: 45%;
+    display: flex;
+    justify-content: center;
 }
 
-.analysisResult__sextextZone {
+.analysisResult__sextextZone{
     margin: 0 8px;
 }
 
-.analysisResult__sexName {
+.analysisResult__sexName{
     margin: 5px 0;
     font-size: 1.2em;
     font-weight: 500;
 }
 
-.analysisResult__sexPercentage {
+.analysisResult__sexPercentage{
+    color: #262626;
     margin: 5px 0;
     font-size: 1em;
 }
 
-.analysisResult__sexValue {
+.analysisResult__sexValue{
+    color: #262626;
     margin: 5px 0;
     font-size: 0.9em;
 }
@@ -217,8 +226,9 @@ div.debug {
     font-size: 5em;
 }
 
-.analysisResult__totalText {
+.analysisResult__totalText{
     font-size: 0.9em;
+    color: #666666;
     margin: 10px 0;
     text-align: center;
 }
@@ -418,4 +428,45 @@ div.debug {
     .analysisResult__icon {
         filter: brightness(2.5);
     }
+}
+
+/* Layout para tab7 - dos gráficos por fila */
+#tab7.tab-content {
+    display: none;
+}
+
+#tab7.tab-content.active {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 10px;
+}
+
+#tab7 canvas {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+}
+
+/* Estilos para scroll personalizado */
+.modal::-webkit-scrollbar,
+.accordion-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal::-webkit-scrollbar-track,
+.accordion-content::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.modal::-webkit-scrollbar-thumb,
+.accordion-content::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.modal::-webkit-scrollbar-thumb:hover,
+.accordion-content::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }

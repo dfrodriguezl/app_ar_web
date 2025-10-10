@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 
 <head>
     <title>AR CNPV 2018</title>
@@ -23,18 +23,13 @@
     <div class="container-scene">
         <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false'
             renderer='antialias: true; alpha: true' gesture-detector gps-camera-recenter>
-            <!-- <a-scene gesture-detector embedded arjs> -->
-            <!-- <a-plane color="#CCC" height="20" width="20"></a-plane> -->
             <a-camera gps-new-camera='gpsMinDistance: 10'></a-camera>
-            <!-- <a-entity material='color: red' geometry='primitive: box'
-            gps-new-entity-place="latitude: 4.716322; longitude: -74.140995" scale="1 1 1"></a-entity> -->
         </a-scene>
     </div>
 
 
     <!-- Modal structure -->
     <div id="myModal" class="modal">
-        <!-- <div class="ol-popup-closer" id="closeModalBtn"></button> -->
         <div class="ol-popup-closer" id="closeModalBtn"></div>
         <div class="results__panel analisis">
             <div class="accordion">
@@ -138,18 +133,20 @@
                         </div>
 
                         <div id="tab5" class="tab-content">
-                            <h3>Tab 5 Content</h3>
-                            <p>Content for Tab 5.</p>
+                            <canvas id="chart5" width="400" height="200"></canvas>
                         </div>
 
                         <div id="tab6" class="tab-content">
-                            <h3>Tab 6 Content</h3>
-                            <p>Content for Tab 6.</p>
+                            <canvas id="chart6" width="400" height="200"></canvas>
                         </div>
 
                         <div id="tab7" class="tab-content">
-                            <h3>Tab 7 Content</h3>
-                            <p>Content for Tab 7.</p>
+                            <canvas id="chart7" width="100" height="30"></canvas>
+                            <canvas id="chart8" width="100" height="30"></canvas>
+                            <canvas id="chart9" width="100" height="30"></canvas>
+                            <canvas id="chart10" width="100" height="30"></canvas>
+                            <canvas id="chart11" width="100" height="30"></canvas>
+                            <canvas id="chart12" width="100" height="30"></canvas>
                         </div>
                     </div>
 
@@ -170,24 +167,45 @@
 
                         <!-- Tab content -->
                         <div id="tab8" class="tab-content active">
-                            <h3>Tab 8 Content</h3>
-                            <p>Content for Tab 8.</p>
+                            <p class="results__panel__title__site">Poblacion por sexo</p>
+                            <div class="analysisResult__graph" id="analysisResult__total">
+                                <ul class="analysisResult__sexList">
+                                    <li class="analysisResult__sexitem">
+                                        <div class="analysisResult__sexicon --colorAlternative007">
+                                            <span class="DANE__Geovisor__icon__Man2"></span>
+                                        </div>
+                                        <div class="analysisResult__sextextZone">
+                                            <h4 class="analysisResult__sexName --colorAlternative007">Hombres</h4>
+                                            <p class="analysisResult__sexValue" id="valueMen">70</p>
+                                            <h5 class="analysisResult__sexPercentage" id="percentageMen">70%</h5>
+                                        </div>
+                                    </li>
+                                    <li class="analysisResult__sexitem">
+                                        <div class="analysisResult__sexicon --colorThird">
+                                            <span class="DANE__Geovisor__icon__Women2"></span>
+                                        </div>
+                                        <div class="analysisResult__sextextZone">
+                                            <h4 class="analysisResult__sexName --colorThird">Mujeres</h4>
+                                            <p class="analysisResult__sexValue" id="valueGirl">30</p>
+                                            <h5 class="analysisResult__sexPercentage" id="percentageGirl">30%</h5>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <p class="analysisResult__totalText" id="analysisResult__totalText">Poblacion Total: 100</p>
+                            </div>
                         </div>
 
                         <div id="tab9" class="tab-content">
-                            <h3>Tab 9 Content</h3>
-                            <p>Content for Tab 9.</p>
+                            <canvas id="chart13" width="400" height="200"></canvas>
                         </div>
 
                         <div id="tab10" class="tab-content">
-                            <h3>Tab 10 Content</h3>
-                            <p>Content for Tab 10.</p>
+                            <canvas id="chart14" width="400" height="200"></canvas>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- <button class="modal-button" id="closeModalBtn">Cerrar</button> -->
     </div>
 
     <!-- Dynamically add places from Javascript -->

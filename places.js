@@ -10,11 +10,10 @@ window.onload = () => {
 
             if (!downloaded) {
                 alert(`Got first GPS position: lon ${e.detail.position.longitude} lat ${e.detail.position.latitude}`);
-                console.log("E", e);
 
                 let indexShow = 0;
 
-                const response = await fetch(`https://cors-anywhere.com/https://geoportal.dane.gov.co/laboratorio/serviciosjson/poblacion/centroides_manzanas.php?coordx=${e.detail.position.longitude}&coordy=${e.detail.position.latitude}&longitud=200`);
+                const response = await fetch(`https://geoportal.dane.gov.co/laboratorio/serviciosjson/poblacion/centroides_manzanas.php?coordx=${e.detail.position.longitude}&coordy=${e.detail.position.latitude}&longitud=200`);
                 const markers = await response.json();
 
                 markers.resultado.forEach((marcador, index) => {
@@ -59,10 +58,10 @@ window.onload = () => {
                         const hogares = marcador.V32;
                         const personas = marcador.V54;
 
-                        text.setAttribute("value", "Manzana: " + marcador.COD_DANE.slice(-8) + 
-                            "\n Viviendas: " + viviendas  + 
-                            "\n Hogares: " + hogares  +
-                            "\n Personas: " + personas  +
+                        text.setAttribute("value", "Manzana: " + marcador.COD_DANE.slice(-8) +
+                            "\n Viviendas: " + viviendas +
+                            "\n Hogares: " + hogares +
+                            "\n Personas: " + personas +
                             "\n Dist: " + distanceCalculated.toFixed(0) + " m \n");
                         // text.setAttribute("value", "Manzana: " + marcador.COD_DANE.slice(-8));
                         text.setAttribute("align", "center");
@@ -263,9 +262,44 @@ async function openModal(data) {
             const serviciosInternetSi = data[serviciosInternetSiVar];
             const serviciosInternetNoVar = variables.variablesCNPV["43704012"];
             const serviciosInternetNo = data[serviciosInternetNoVar];
-            
 
-            
+            const hombresVar = variables.variablesCNPV["43801001"];
+            const hombres = data[hombresVar];
+            const mujeresVar = variables.variablesCNPV["43801002"];
+            const mujeres = data[mujeresVar];
+
+            const edad0a9Var = variables.variablesCNPV["43802001"];
+            const edad0a9 = data[edad0a9Var];
+            const edad10a19Var = variables.variablesCNPV["43802002"];
+            const edad10a19 = data[edad10a19Var];
+            const edad20a29Var = variables.variablesCNPV["43802003"];
+            const edad20a29 = data[edad20a29Var];
+            const edad30a39Var = variables.variablesCNPV["43802004"];
+            const edad30a39 = data[edad30a39Var];
+            const edad40a49Var = variables.variablesCNPV["43802005"];
+            const edad40a49 = data[edad40a49Var];
+            const edad50a59Var = variables.variablesCNPV["43802006"];
+            const edad50a59 = data[edad50a59Var];
+            const edad60a69Var = variables.variablesCNPV["43802007"];
+            const edad60a69 = data[edad60a69Var];
+            const edad70a79Var = variables.variablesCNPV["43802008"];
+            const edad70a79 = data[edad70a79Var];
+            const edad80masVar = variables.variablesCNPV["43802009"];
+            const edad80mas = data[edad80masVar];
+
+            const primariaVar = variables.variablesCNPV["43803001"];
+            const primaria = data[primariaVar];
+            const secundariaVar = variables.variablesCNPV["43803002"];
+            const secundaria = data[secundariaVar];
+            const superiorVar = variables.variablesCNPV["43803003"];
+            const superior = data[superiorVar];
+            const postgradoVar = variables.variablesCNPV["43803004"];
+            const postgrado = data[postgradoVar];
+            const ningunoVar = variables.variablesCNPV["43803005"];
+            const ninguno = data[ningunoVar];
+            const sin_informacionVar = variables.variablesCNPV["43803006"];
+            const sin_informacion = data[sin_informacionVar];
+
 
             const dataCharts = {
                 chart1: {
@@ -275,33 +309,91 @@ async function openModal(data) {
                     uso_lea: { valor: usoLEA, etiqueta: "Lugar especial de alojamiento" }
                 },
                 chart2: {
-                    uso_industria: {valor: usoMixtoIndustria, etiqueta: "Industria"},
-                    uso_comercio: {valor: usoMixtoComercio, etiqueta: "Comercio"},
-                    uso_servicios: {valor: usoMixtoServicios, etiqueta: "Servicios"},
-                    uso_agropecuario: {valor: usoMixtoAgro, etiqueta: "Agropecuario, Agroindustrial, Forestal"},
-                    uso_sin_informacion: {valor: usoMixtoSI, etiqueta: "Sin informacion"},
+                    uso_industria: { valor: usoMixtoIndustria, etiqueta: "Industria" },
+                    uso_comercio: { valor: usoMixtoComercio, etiqueta: "Comercio" },
+                    uso_servicios: { valor: usoMixtoServicios, etiqueta: "Servicios" },
+                    uso_agropecuario: { valor: usoMixtoAgro, etiqueta: "Agropecuario, Agroindustrial, Forestal" },
+                    uso_sin_informacion: { valor: usoMixtoSI, etiqueta: "Sin informacion" },
                 },
                 chart3: {
-                    uso_industria: {valor: usoNRIndustria, etiqueta: "Industria"},
-                    uso_comercio: {valor: usoNRComercio, etiqueta: "Comercio"},
-                    uso_servicios: {valor: usoNRServicios, etiqueta: "Servicios"},
-                    uso_agropecuario: {valor: usoNRAgro, etiqueta: "Agropecuario, Agroindustrial, Forestal"},
-                    uso_institucional: {valor: usoNRInstitucional, etiqueta: "Institucional"},
-                    uso_lote: {valor: usoNRLote, etiqueta: "Lote (Unidad sin construccion)"},
-                    uso_parque: {valor: usoNRParque, etiqueta: "Parque/Zona verde"},
-                    uso_minero: {valor: usoNRMinero, etiqueta: "Minero-Energetico"},
-                    uso_proteccion: {valor: usoNRProteccion, etiqueta: "Proteccion/Conservacion ambiental"},
-                    uso_construccion: {valor: usoNRConstruccion, etiqueta: "En construccion"},
-                    uso_sin_informacion: {valor: usoNRSI, etiqueta: "Sin informacion"}
+                    uso_industria: { valor: usoNRIndustria, etiqueta: "Industria" },
+                    uso_comercio: { valor: usoNRComercio, etiqueta: "Comercio" },
+                    uso_servicios: { valor: usoNRServicios, etiqueta: "Servicios" },
+                    uso_agropecuario: { valor: usoNRAgro, etiqueta: "Agropecuario, Agroindustrial, Forestal" },
+                    uso_institucional: { valor: usoNRInstitucional, etiqueta: "Institucional" },
+                    uso_lote: { valor: usoNRLote, etiqueta: "Lote (Unidad sin construccion)" },
+                    uso_parque: { valor: usoNRParque, etiqueta: "Parque/Zona verde" },
+                    uso_minero: { valor: usoNRMinero, etiqueta: "Minero-Energetico" },
+                    uso_proteccion: { valor: usoNRProteccion, etiqueta: "Proteccion/Conservacion ambiental" },
+                    uso_construccion: { valor: usoNRConstruccion, etiqueta: "En construccion" },
+                    uso_sin_informacion: { valor: usoNRSI, etiqueta: "Sin informacion" }
                 },
                 chart4: {
-                    casa: {valor: casa, etiqueta: "Casa"},
-                    apto: {valor: apto, etiqueta: "Apartamento"},
-                    cuarto: {valor: cuarto, etiqueta: "Tipo cuarto"},
-                    vivienda_indigena: {valor: viviendaIndigena, etiqueta: "Vivienda tradicional indígena"},
-                    vivienda_etnica: {valor: viviendaTradicional, etiqueta: "Vivienda tradicional étnica (Afrocolombiana, isleña, Rom"},
-                    otro: {valor: otro, etiqueta: "Otro (Contenedor, carpa, embarcación, vagón, cueva, refugio natural,etc."}
-                }
+                    casa: { valor: casa, etiqueta: "Casa" },
+                    apto: { valor: apto, etiqueta: "Apartamento" },
+                    cuarto: { valor: cuarto, etiqueta: "Tipo cuarto" },
+                    vivienda_indigena: { valor: viviendaIndigena, etiqueta: "Vivienda tradicional indígena" },
+                    vivienda_etnica: { valor: viviendaTradicional, etiqueta: "Vivienda tradicional étnica (Afrocolombiana, isleña, Rom" },
+                    otro: { valor: otro, etiqueta: "Otro (Contenedor, carpa, embarcación, vagón, cueva, refugio natural,etc." }
+                },
+                chart5: {
+                    ocupacion_ocupada: { valor: ocupacionOcupada, etiqueta: "Ocupada con personas presentes" },
+                    ocupacion_ausentes: { valor: ocupacionAusentes, etiqueta: "Ocupada con todas las personas ausentes" },
+                    ocupacion_temporal: { valor: ocupacionTemporal, etiqueta: "Vivienda temporal (para vacaciones, visitas, etc.)" },
+                    ocupacion_desocupada: { valor: ocupacionDesocupada, etiqueta: "Desocupada" },
+                },
+                chart6: {
+                    ocupacion_estrato1: { valor: ocupacionEstrato1, etiqueta: "Estrato 1" },
+                    ocupacion_estrato2: { valor: ocupacionEstrato2, etiqueta: "Estrato 2" },
+                    ocupacion_estrato3: { valor: ocupacionEstrato3, etiqueta: "Estrato 3" },
+                    ocupacion_estrato4: { valor: ocupacionEstrato4, etiqueta: "Estrato 4" },
+                    ocupacion_estrato5: { valor: ocupacionEstrato5, etiqueta: "Estrato 5" },
+                    ocupacion_estrato6: { valor: ocupacionEstrato6, etiqueta: "Estrato 6" },
+                    ocupacion_estrato_ns: { valor: ocupacionEstratoNS, etiqueta: "No sabe o no tiene estrato" },
+                },
+                chart7: {
+                    servicios_energia_si: { valor: serviciosEnergiaSi, etiqueta: "Si" },
+                    servicios_energia_no: { valor: serviciosEnergiaNo, etiqueta: "No" }
+                },
+                chart8: {
+                    servicios_acueducto_si: { valor: serviciosAcueductoSi, etiqueta: "Si" },
+                    servicios_acueducto_no: { valor: serviciosAcueductoNo, etiqueta: "No" },
+                },
+                chart9: {
+                    servicios_alcantarillado_si: { valor: serviciosAlcantarilladoSi, etiqueta: "Si" },
+                    servicios_alcantarillado_no: { valor: serviciosAlcantarilladoNo, etiqueta: "No" },
+                },
+                chart10: {
+                    servicios_basura_si: { valor: serviciosBasuraSi, etiqueta: "Si" },
+                    servicios_basura_no: { valor: serviciosBasuraNo, etiqueta: "No" },
+                },
+                chart11: {
+                    servicios_gas_si: { valor: serviciosGasSi, etiqueta: "Si" },
+                    servicios_gas_no: { valor: serviciosGasNo, etiqueta: "No" },
+                },
+                chart12: {
+                    servicios_internet_si: { valor: serviciosInternetSi, etiqueta: "Si" },
+                    servicios_internet_no: { valor: serviciosInternetNo, etiqueta: "No" },
+                },
+                chart13: {
+                    edad_0a9: { valor: edad0a9, etiqueta: "0 a 9 años" },
+                    edad_10a19: { valor: edad10a19, etiqueta: "10 a 19 annos" },
+                    edad_20a29: { valor: edad20a29, etiqueta: "20 a 29 annos" },
+                    edad_30a39: { valor: edad30a39, etiqueta: "30 a 39 annos" },
+                    edad_40a49: { valor: edad40a49, etiqueta: "40 a 49 annos" },
+                    edad_50a59: { valor: edad50a59, etiqueta: "50 a 59 annos" },
+                    edad_60a69: { valor: edad60a69, etiqueta: "60 a 69 annos" },
+                    edad_70a79: { valor: edad70a79, etiqueta: "70 a 79 annos" },
+                    edad_80mas: { valor: edad80mas, etiqueta: "80 annos o más" },
+                },
+                chart14: {
+                    primaria: { valor: primaria, etiqueta: "Primaria" },
+                    secundaria: { valor: secundaria, etiqueta: "Secundaria" },
+                    superior: { valor: superior, etiqueta: "Superior" },
+                    postgrado: { valor: postgrado, etiqueta: "Postgrado" },
+                    ninguno: { valor: ninguno, etiqueta: "Ninguno" },
+                    sin_informacion: { valor: sin_informacion, etiqueta: "Sin informacion" },
+                },
             }
 
             document.getElementById("analysisResult__totalPeople").innerText = totalPersonas;
@@ -309,6 +401,13 @@ async function openModal(data) {
             document.getElementById("analysisResult__totalHogares").innerText = hogares;
             document.getElementById("analysisResult__totalViviendas").innerText = viviendas;
             document.getElementById("analysisResult__totalPesonaparticular").innerText = personasLugaresParticulares;
+
+            document.getElementById("valueGirl").innerText = mujeres;
+            document.getElementById("valueMen").innerText = hombres;
+
+            document.getElementById("percentageGirl").innerText = (mujeres / totalPersonas * 100).toFixed(2) + " %";
+            document.getElementById("percentageMen").innerText = (hombres / totalPersonas * 100).toFixed(2) + " %";
+            document.getElementById("analysisResult__totalText").innerText = "Poblacion Total: " + totalPersonas;
 
             modal.style.display = "block";  // Show the modal
 

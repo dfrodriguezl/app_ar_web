@@ -12,6 +12,36 @@ function drawChart(data) {
     const dataProcessedChart4 = processData(data, "chart4");
     setDataToChart(dataProcessedChart4, "chart4", "bar");
 
+    const dataProcessedChart5 = processData(data, "chart5");
+    setDataToChart(dataProcessedChart5, "chart5", "bar");
+
+    const dataProcessedChart6 = processData(data, "chart6");
+    setDataToChart(dataProcessedChart6, "chart6", "bar");
+
+    const dataProcessedChart7 = processData(data, "chart7");
+    setDataToChart(dataProcessedChart7, "chart7", "bar", "Energia electrica");
+
+    const dataProcessedChart8 = processData(data, "chart8");
+    setDataToChart(dataProcessedChart8, "chart8", "bar", "Acueducto");
+
+    const dataProcessedChart9 = processData(data, "chart9");
+    setDataToChart(dataProcessedChart9, "chart9", "bar", "Alcantarillado");
+
+    const dataProcessedChart10 = processData(data, "chart10");
+    setDataToChart(dataProcessedChart10, "chart10", "bar", "Recoleccion de basuras");
+
+    const dataProcessedChart11 = processData(data, "chart11");
+    setDataToChart(dataProcessedChart11, "chart11", "bar", "Gas natural conectado a red");
+
+    const dataProcessedChart12 = processData(data, "chart12");
+    setDataToChart(dataProcessedChart12, "chart12", "bar", "Internet");
+
+    const dataProcessedChart13 = processData(data, "chart13");
+    setDataToChart(dataProcessedChart13, "chart13", "bar", "Personas");
+
+    const dataProcessedChart14 = processData(data, "chart14");
+    setDataToChart(dataProcessedChart14, "chart14", "pie", "Personas");
+
 }
 
 function processData(data, chartNumber) {
@@ -33,7 +63,7 @@ function processData(data, chartNumber) {
     }
 }
 
-function setDataToChart(dataProcessedChart, chartNumber, chartType){
+function setDataToChart(dataProcessedChart, chartNumber, chartType, title = 'Viviendas'){
     // Get the context of the canvas element
     const ctx1 = document.getElementById(chartNumber).getContext('2d');
 
@@ -43,7 +73,7 @@ function setDataToChart(dataProcessedChart, chartNumber, chartType){
         data: {
             labels: dataProcessedChart.labels,
             datasets: [{
-                label: 'Viviendas',
+                label: title,
                 data: dataProcessedChart.values,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
