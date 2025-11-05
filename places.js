@@ -67,8 +67,73 @@ window.onload = () => {
                         text.setAttribute("align", "center");
                         text.setAttribute("data-code", marcador.COD_DANE);
 
+                        // Botón "ver más" - contenedor
+                        const buttonContainer = document.createElement("a-entity");
+                        buttonContainer.setAttribute("position", {
+                            x: 0,
+                            y: -25,
+                            z: 0
+                        });
+                        buttonContainer.setAttribute("look-at", "[gps-new-camera]");
+                        buttonContainer.setAttribute("data-code", marcador.COD_DANE);
+                        buttonContainer.setAttribute("marcador", JSON.stringify(marcador));
+                        buttonContainer.setAttribute("name", marcador.COD_DANE);
+
+                        // Box con fondo negro transparente y bordes redondeados simples
+                        const buttonPlane = document.createElement("a-box");
+                        buttonPlane.setAttribute("width", 15);
+                        buttonPlane.setAttribute("height", 3);
+                        buttonPlane.setAttribute("depth", 0.1);
+                        buttonPlane.setAttribute("position", { x: 0, y: 0, z: -0.01 });
+                        buttonPlane.setAttribute("look-at", "[gps-new-camera]");
+                        buttonPlane.setAttribute("material", {
+                            color: "#000000",
+                            opacity: 0.6,
+                            transparent: true,
+                            shader: "flat"
+                        });
+                        buttonPlane.setAttribute("cursor", "rayOrigin: mouse");
+                        buttonPlane.setAttribute("data-code", marcador.COD_DANE);
+                        buttonPlane.setAttribute("marcador", JSON.stringify(marcador));
+                        buttonPlane.setAttribute("name", marcador.COD_DANE);
+
+                        // Agregar bordes redondeados suavizando las esquinas
+                        buttonPlane.addEventListener('loaded', function() {
+                            const mesh = buttonPlane.getObject3D('mesh');
+                            if (mesh && mesh.geometry && window.THREE) {
+                                // Suavizar las aristas del box para simular bordes redondeados
+                                const edges = mesh.geometry.attributes.position;
+                                if (edges) {
+                                    // Aplicar suavizado básico a las esquinas
+                                    mesh.geometry.computeVertexNormals();
+                                }
+                            }
+                        });
+
+                        // Texto del botón
+                        const button = document.createElement("a-text");
+                        button.setAttribute("scale", {
+                            x: textScale * 1.2,
+                            y: textScale * 1.2,
+                            z: textScale * 1.2
+                        });
+                        button.setAttribute("position", { x: 0, y: 0, z: 0.05 });
+                        button.setAttribute("value", "Ver mas...");
+                        button.setAttribute("align", "center");
+                        button.setAttribute("color", "white");
+                        button.setAttribute("shader", "flat");
+                        button.setAttribute("opacity", "1");
+                        button.setAttribute("data-code", marcador.COD_DANE);
+                        button.setAttribute("marcador", JSON.stringify(marcador));
+                        button.setAttribute("name", marcador.COD_DANE);
+
+                        // Agregar primero el plano, luego el texto para que el texto esté encima
+                        buttonContainer.appendChild(buttonPlane);
+                        buttonContainer.appendChild(button);
+
                         compoundEntity.appendChild(icon);
                         compoundEntity.appendChild(text);
+                        compoundEntity.appendChild(buttonContainer);
 
 
                         const clickListener = (ev, a) => {
@@ -87,7 +152,16 @@ window.onload = () => {
 
                         }
 
+                        // Listener específico para el botón
+                        const buttonClickListener = (ev) => {
+                            ev.stopPropagation();
+                            ev.preventDefault();
+                            openModal(marcador);
+                        };
+
                         compoundEntity.addEventListener('click', clickListener);
+                        buttonPlane.addEventListener('click', buttonClickListener);
+                        buttonContainer.addEventListener('click', buttonClickListener);
                         document.querySelector("a-scene").appendChild(compoundEntity);
 
                         indexShow = 0;
